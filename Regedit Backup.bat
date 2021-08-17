@@ -25,12 +25,7 @@ REG EXPORT "HKLM" 3.reg
 REG EXPORT "HKU" 4.reg
 REG EXPORT "HKCC" 5.reg
 copy 1.reg+2.reg+3.reg+4.reg+5.reg backup.reg
-del 1.reg
-del 2.reg
-del 3.reg
-del 4.reg
-del 5.reg
-cd /
+del 1.reg 2.reg 3.reg 4.reg 5.reg
 cls
 echo Backup concluido com sucesso
 echo Backup completed successfully
