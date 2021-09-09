@@ -9,6 +9,7 @@
 ::        |___/                     |___/ 
 
 @echo off
+echo Rodando...
 echo Running...
 echo.
 cd /
