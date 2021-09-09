@@ -16,7 +16,7 @@ if not exist C:\backup (
     mkdir backup
 )
 cd c:\backup
-if exist C:\backup\backup.reg (
+if exist backup.reg (
     del backup.reg
 )
 REG EXPORT "HKCR" 1.reg
