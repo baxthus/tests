@@ -1,4 +1,4 @@
-:: Ваш код подтверждения Наберите его в поле ввода
+﻿:: Ваш код подтверждения Наберите его в поле ввода
 ::  ____           _____  _ _             
 :: |  _ \         |  __ \(_) |            
 :: | |_) |_   _   | |__) |_| |_ _____   _ 
@@ -7,8 +7,10 @@
 :: |____/ \__, |  |_|  \_\_|\__/___|\__, |
 ::         __/ |                     __/ |
 ::        |___/                     |___/ 
+:: Copyright RitzyDevelopment 2021
 
 @echo off
+echo.
 echo Rodando...
 echo Running...
 echo.
@@ -17,7 +19,7 @@ if not exist C:\backup (
     mkdir backup
 )
 cd c:\backup
-if exist backup.reg (
+if exist C:\backup\backup.reg (
     del backup.reg
 )
 REG EXPORT "HKCR" 1.reg
