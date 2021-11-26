@@ -17,4 +17,3 @@ with open("video.mp4", "wb") as out:
 print("") # Opcional
 
 print("Video salvo")
-
