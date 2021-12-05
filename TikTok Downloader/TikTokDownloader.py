@@ -2,18 +2,20 @@ from TikTokApi import TikTokApi
 
 api = TikTokApi.get_instance()
 
-print("") # Opcional
+print('') # Opcional
 
-url = input("Digite a url do video: ")
+url = input('Digite a url do video: ')
 
-if url == 'sair':
+if url == 'exit':
+    exit()
+if url == 'quit':
     exit()
 
 video = api.get_video_by_url(url)
 
-with open("video.mp4", "wb") as out:
+with open('video.mp4', 'wb') as out:
     out.write(video)
 
-print("") # Opcional
+print('') # Opcional
 
-print("Video salvo")
+print('Video salvo')
