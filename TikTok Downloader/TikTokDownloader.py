@@ -1,3 +1,6 @@
+# Abysmal - abysmal26.github.io
+# HyPeRiS Group
+
 from TikTokApi import TikTokApi
 
 api = TikTokApi.get_instance()

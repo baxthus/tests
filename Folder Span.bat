@@ -1,3 +1,6 @@
+REM Abysmal - abysmal26.github.io
+REM HyPeRiS Group
+
 @echo off
 title Folder Span
 
