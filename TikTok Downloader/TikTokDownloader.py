@@ -9,9 +9,9 @@ print('') # Opcional
 
 url = input('Digite a url do video: ')
 
-if url == 'exit':
+if url == 'exit' or 'quit':
     exit()
-if url == 'quit':
+if url == 'sair':
     exit()
 
 video = api.get_video_by_url(url)
