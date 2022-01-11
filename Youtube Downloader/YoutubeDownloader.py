@@ -1,4 +1,8 @@
 from pytube import YouTube
+import os
+
+# Get Desktop location
+desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 
 formatcont = input('Video or Audio: ')
 
@@ -11,7 +15,7 @@ if ((formatcont == 'Video') or (formatcont == 'video')):
     print('')
     print('Download started!')
     ys = yt.streams.get_highest_resolution()
-    ys.download('C:/Users/Dell/Desktop')
+    ys.download(desktop)
     print('')
     print('Download complete!')
 elif ((formatcont == 'Audio') or (formatcont == 'audio')):
@@ -23,8 +27,10 @@ elif ((formatcont == 'Audio') or (formatcont == 'audio')):
     print('')
     print('Download started!')
     ys = yt.streams.get_audio_only()
-    ys.download('C:/Users/Dell/Desktop')
+    ys.download(desktop)
     print('')
     print('Download complete!')
 else:
+    print('')
+    print('Error!')
     exit()
