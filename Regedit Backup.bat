@@ -1,4 +1,4 @@
-﻿REM Abysmal - abysmal26.github.io
+﻿REM Abysmal - abysmal26.github.io - ayo.so/abysmal26
 REM HyPeRiS Group
 
 @echo off
