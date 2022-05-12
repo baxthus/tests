@@ -6,11 +6,11 @@ echo.
 echo Rodando...
 echo Running...
 echo.
-cd /
+cd C:\
 if not exist C:\backup (
     mkdir backup
 )
-cd c:\backup
+cd C:\backup
 if exist C:\backup\backup.reg (
     del backup.reg
 )
