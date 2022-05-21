@@ -1,8 +1,8 @@
 from turtle import *
 import time
 speed(15) # Change the execution velocity
-color('cyan')
-bgcolor('black')
+color('#ABE9B3')
+bgcolor('#1E1E2E')
 b = 200
 while b > 0:
     left(b)
