@@ -1,4 +1,4 @@
-# Abysmal - abysmal26.github.io
+# Abysmal - abysmal26.github.io - ayo.so/abysmal26
 # HyPeRiS Group
 
 import gdshortener

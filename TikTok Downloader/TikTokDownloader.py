@@ -16,4 +16,4 @@ with open('video.mp4', 'wb') as out:
 
 print('') # Optional
 
-print('Video salvo')
+print('Video saved!')
