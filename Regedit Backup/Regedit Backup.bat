@@ -1,9 +1,5 @@
-﻿REM Abysmal - abysmal26.github.io - ayo.so/abysmal26
-REM HyPeRiS Group
-
-@echo off
+﻿@echo off
 echo.
-echo Rodando...
 echo Running...
 echo.
 cd C:\
@@ -22,7 +18,6 @@ REG EXPORT "HKCC" 5.reg
 copy 1.reg+2.reg+3.reg+4.reg+5.reg backup.reg
 del 1.reg 2.reg 3.reg 4.reg 5.reg
 cls
-echo Backup concluido com sucesso
 echo Backup completed successfully
 echo.
 explorer.exe C:\Backup
