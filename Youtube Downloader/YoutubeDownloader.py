@@ -1,28 +1,51 @@
 from pytube import YouTube
+import PySimpleGUI as sg
 
-videoLink = input('Enter the link: ')
+sg.theme('DarkBlue14')
+
+layout = [[sg.Text('Paste the URL below')],
+          [sg.InputText(key='url')],
+          [sg.Text('Video or audio?')],
+          [sg.Combo(['Video', 'Audio'], default_value='Video', key='format', readonly=True)],
+          [sg.Button('Submit'), sg.Button('Cancel')]]
+
+window = sg.Window('YouTube Downloader', layout)
+while True:
+    event, values = window.read()
+
+    if event in (None, 'Cancel'):
+        exit()
+
+    if event == 'Submit':
+        break
+window.close()
+
+format = values['format']
 
 try:
-    yt = YouTube(videoLink)
+    yt = YouTube(values['url'])
 except:
-    print('Connection Error')
+    print('Connection Error!')
+    exit()
 
-print('')
-print('Title: ', yt.title)
-print('Number of views: ', yt.views)
-print('Length of video: ', yt.length)
+layout = [[sg.Text(' '.join(['Title: ', str(yt.title)]))],
+          [sg.Text(' '.join(['Number of views: ', str(yt.views)]))],
+          [sg.Text(' '.join(['Length of video: ', str(yt.length), ' seconds']))],
+          [sg.Button('Ok')]]  
+window = sg.Window('YouTube Downloader', layout)
+event, values = window.read()
+window.close()
 
-print('')
-downType = input('Video or audio: ')
-
-if (downType == 'Video' or downType == 'video'):
+if (format == 'Video'):
     ys = yt.streams.get_highest_resolution()
-elif (downType == 'Audio' or downType == 'audio'):
+elif (format == 'Audio'):
     ys = yt.streams.get_audio_only()
 else:
-    print('Invalid input')
+    print('Error!')
+    exit()
 
-print()
-print('Downloading...')
 ys.download()
-print('Download completed!')
+
+window = sg.Window('', [[sg.Text('Done!')], [sg.Button('Close')]])
+event, values = window.read()
+window.close()

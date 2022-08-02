@@ -1,1 +1,2 @@
 pytube3>=12.1.0
+PySimpleGUI
