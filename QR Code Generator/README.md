@@ -1,4 +1,4 @@
-# Spotify downloader
+# QR Code Generator
 
 ## How to use:
 
@@ -11,5 +11,5 @@ python SpotifyDownloader.py
 On Windows:
 ```
 py -m pip install -r requirements.txt
-py SpotifyDownloader.py
+py SpotifyDownloader.
 ```
