@@ -43,3 +43,23 @@
 
 # Ignore code-workspaces
 *.code-workspace
+
+### Images ###
+# JPEG
+*.jpg
+*.jpeg
+*.jpe
+*.jif
+*.jfif
+*.jfi
+# Graphics Interchange Format
+*.gif
+# Web P
+*.webp
+# Portable Network Graphics
+*.png
+# BMP
+*.bmp
+*.dib
+# ICO
+*.ico
