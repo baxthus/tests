@@ -6,7 +6,7 @@ sg.theme('DarkBlue14')
 layout = [[sg.Text('Paste the URL below')],
           [sg.InputText(key='url')],
           [sg.Text('Video or audio?')],
-          [sg.Combo(['Video', 'Audio'], default_value='Video', key='format', readonly=True)],
+          [sg.Combo(['Video', 'Audio'], key='format', readonly=True)],
           [sg.Button('Submit'), sg.Button('Cancel')]]
 
 window = sg.Window('YouTube Downloader', layout)
