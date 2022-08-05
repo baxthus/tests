@@ -1,4 +1,4 @@
-# Client for is.gd/v.gd
+# Client for is.gd/v.gd and shrtcode
 
 ## How to use:
 
