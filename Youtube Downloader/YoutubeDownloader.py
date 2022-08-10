@@ -2,6 +2,7 @@ from pytube import YouTube
 import PySimpleGUI as sg
 
 sg.theme('DarkBlue14')
+sg.set_options(font=('JetBrains Mono', 11))
 
 layout = [[sg.Text('Paste the URL below')],
           [sg.InputText(key='url')],

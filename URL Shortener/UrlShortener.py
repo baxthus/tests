@@ -1,8 +1,13 @@
+#!#############!#
+#! NOT WORKING !#
+#!#############!#
+
 import gdshortener
 import PySimpleGUI as sg
 import requests
 
 sg.theme('DarkBlue14')
+sg.set_options(font=('JetBrains Mono', 11))
 
 def GUIButton(layout):
     global values

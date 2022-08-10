@@ -2,6 +2,7 @@ import qrcode
 import PySimpleGUI as sg
 
 sg.theme('DarkBlue14')
+sg.set_options(font=('JetBrains Mono', 11))
 
 layout = [[sg.Text('Type the version below (1 to 10 that control the size)')],
           [sg.Combo(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], default_value='1', key='version', readonly=True)],
