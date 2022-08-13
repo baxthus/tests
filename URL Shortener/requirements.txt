@@ -1,3 +1,4 @@
 gdshortener
 PySimpleGUI
 requests
+pyperclip
