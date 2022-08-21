@@ -63,3 +63,5 @@
 *.dib
 # ICO
 *.ico
+
+.idea/
