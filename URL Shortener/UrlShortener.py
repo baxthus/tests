@@ -1,5 +1,3 @@
-import json
-
 import PySimpleGUI as sg
 import requests
 import pyperclip
@@ -13,7 +11,7 @@ def gui(layout1, url, url2):
     while True:
         event, values1 = window.read()
 
-        if event == 'Cancel' or event == 'Close' or event == sg.WINDOW_CLOSED:
+        if event in ('Close', 'Cancel', sg.WINDOW_CLOSED):
             exit()
 
         if event == 'Submit':
@@ -37,14 +35,14 @@ def layout_final(final_url1):
 
 
 layout = [[sg.Text('Select a service to use below')],
-          [sg.Combo(['is.gd', 'v.gd', 'shrtcode', 'da.gd', 'ttm.sh', 'envs.sh', 'ulvis.net', 'gotiny.css'],
+          [sg.Combo(['is.gd', 'v.gd', 'shrtcode', 'da.gd', 'ttm.sh', 'envs.sh', 'ulvis.net', 'gotiny.cc'],
                     default_value='is.gd', key='service', readonly=True)],
           [sg.Button('Submit'), sg.Button('Cancel')]]
 
 values = gui(layout, None, None)
 service = values['service']
 
-service_type1 = ['is.gd', 'v.gd', 'da.gd', 'ulvis.net', 'gotiny.css']
+service_type1 = ['is.gd', 'v.gd', 'da.gd', 'ulvis.net', 'gotiny.cc']
 service_type2 = ['shrtcode', 'ttm.sh', 'envs.sh']
 
 if service in service_type1:
@@ -113,7 +111,7 @@ elif service == 'ulvis.net':
 
     layout = layout_final(final_url)
     gui(layout, final_url, None)
-elif service == 'gotiny.css':
+elif service == 'gotiny.cc':
     if values['custom_url'] == '':
         x = requests.post('https://gotiny.cc/api', headers={'Content-Type': 'application/json'},
                           json={'long': values['url']})
