@@ -6,7 +6,7 @@ sg.theme('DarkBlue14')
 sg.set_options(font=('JetBrains Mono', 11))
 
 
-def gui(layout1, url, url2):
+def gui(layout1, url, url2, url3):
     window = sg.Window('URL Shortener', layout1)
     while True:
         event, values1 = window.read()
@@ -21,6 +21,8 @@ def gui(layout1, url, url2):
             pyperclip.copy(url)
         if event == 'Copy URL 2':
             pyperclip.copy(url2)
+        if event == 'Copy URL 3':
+            pyperclip.copy(url3)
     window.close()
 
     return values1
@@ -39,7 +41,7 @@ layout = [[sg.Text('Select a service to use below')],
                     default_value='is.gd', key='service', readonly=True)],
           [sg.Button('Submit'), sg.Button('Cancel')]]
 
-values = gui(layout, None, None)
+values = gui(layout, None, None, None)
 service = values['service']
 
 service_type1 = ['is.gd', 'v.gd', 'da.gd', 'ulvis.net', 'gotiny.cc']
@@ -58,7 +60,7 @@ elif service in service_type2:
 else:
     print('Error!'); exit()
 
-values = gui(layout, None, None)
+values = gui(layout, None, None, None)
 
 if service in ('is.gd', 'v.gd'):
     if values['custom_url'] == '':
@@ -70,26 +72,28 @@ if service in ('is.gd', 'v.gd'):
     final_url = x.text
 
     layout = layout_final(final_url)
-    gui(layout, final_url, None)
+    gui(layout, final_url, None, None)
 elif service == 'shrtcode':
     x = requests.post('https://api.shrtco.de/v2/shorten', params={'url': values['url']})
     data = x.json()
 
     final_url = data['result']['short_link']
     final_url2 = data['result']['short_link2']
+    final_url3 = data['result']['short_link3']
 
     layout = [[sg.Text('Your shorter URL:')],
               [sg.Text('URL 1: '), sg.InputText(final_url, readonly=True)],
               [sg.Text('URL 2: '), sg.InputText(final_url2, readonly=True)],
-              [sg.Button('Copy URL 1'), sg.Button('Copy URL 2'), sg.Button('Close')]]
+              [sg.Text('URL 3: '), sg.InputText(final_url3, readonly=True)],
+              [sg.Button('Copy URL 1'), sg.Button('Copy URL 2'), sg.Button('Copy URL 3'), sg.Button('Close')]]
 
-    gui(layout, final_url, final_url2)
+    gui(layout, final_url, final_url2, final_url3)
 elif service in ('ttm.sh', 'envs.sh'):
     x = requests.post(f'https://{service}', data={'shorten': values['url']})
     final_url = x.text
 
     layout = layout_final(final_url)
-    gui(layout, final_url, None)
+    gui(layout, final_url, None, None)
 elif service == 'da.gd':
     if values['custom_url'] == '':
         x = requests.get('https://da.gd/s', params={'url': values['url']})
@@ -99,7 +103,7 @@ elif service == 'da.gd':
     final_url = x.text
 
     layout = layout_final(final_url)
-    gui(layout, final_url, None)
+    gui(layout, final_url, None, None)
 elif service == 'ulvis.net':
     if values['custom_url'] == '':
         x = requests.get('https://ulvis.net/api.php', params={'url': values['url'], 'private': 1})
@@ -110,7 +114,7 @@ elif service == 'ulvis.net':
     final_url = x.text
 
     layout = layout_final(final_url)
-    gui(layout, final_url, None)
+    gui(layout, final_url, None, None)
 elif service == 'gotiny.cc':
     if values['custom_url'] == '':
         x = requests.post('https://gotiny.cc/api', headers={'Content-Type': 'application/json'},
@@ -124,4 +128,4 @@ elif service == 'gotiny.cc':
         final_url = 'gotiny.cc/' + values['custom_url']
 
     layout = layout_final(final_url)
-    gui(layout, final_url, None)
+    gui(layout, final_url, None, None)
