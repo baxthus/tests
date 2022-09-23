@@ -1,38 +1,52 @@
 import PySimpleGUI as sg
 import requests
-import webbrowser
+
+
+def gui(layout1):
+    window = sg.Window('Covid Stats', layout1)
+    while True:
+        event, values1 = window.read()
+
+        if event in ('Close', 'Cancel', sg.WINDOW_CLOSED):
+            exit()
+
+        if event == 'Submit':
+            break
+    window.close()
+
+    return values1
+
 
 sg.theme('DarkBlue14')
-sg.set_options(font=('JetBrains Mono', 11))
-sg.set_options()
+sg.set_options(font=('Inter', 11))
 
-x = requests.get('https://disease.sh/v3/covid-19/all')
-data = x.json()
+layout = [[sg.Text('Type the country below (leave in blank for worldwide)')],
+          [sg.InputText(key='country')],
+          [sg.Button('Submit'), sg.Button('Cancel')]]
 
-cases = data['cases']
-today_cases = data['todayCases']
-deaths = data['deaths']
-today_deaths = data['todayDeaths']
-recovered = data['recovered']
-today_recovered = data['todayRecovered']
+values = gui(layout)
+country = values['country']
 
-layout = [[sg.Text('Covid-19 Data')],
-          [sg.Text('Data provided by'), sg.Text('disease.sh', click_submits=True, key='-LINK-')],
-          [sg.HorizontalSeparator()],
-          [sg.Text(f'Cases:           {cases}')],
-          [sg.Text(f'Today cases:     {today_cases}')],
-          [sg.Text(f'Deaths:          {deaths}')],
-          [sg.Text(f'Today deaths:    {today_deaths}')],
-          [sg.Text(f'Recovered:       {recovered}')],
-          [sg.Text(f'Today recovered: {today_recovered}')],
-          [sg.Button('Close')]]
+if values['country'] != '':
+    requests = requests.get(f'https://disease.sh/v3/covid-19/countries/{country}')
+else:
+    country = 'worldwide'
+    requests = requests.get('https://disease.sh/v3/covid-19/all')
 
-window = sg.Window('Covid-19 Data', layout)
-while True:
-    event, values = window.read()
+data = requests.json()
 
-    if event == '-LINK-':
-        webbrowser.open('https://disease.sh')
-
-    if event in ('Close', sg.WINDOW_CLOSED):
-        exit()
+if 'message' in data:
+    layout = [[sg.Text(f'{data["message"]}')],
+              [sg.Button('Close')]]
+    gui(layout)
+else:
+    layout = [[sg.Text(f'{country.capitalize()}')],
+              [sg.HorizontalSeparator()],
+              [sg.Text(f'Cases: {data["cases"]}')],
+              [sg.Text(f'Today Cases: {data["todayCases"]}')],
+              [sg.Text(f'Deaths: {data["deaths"]}')],
+              [sg.Text(f'Today Deaths: {data["todayDeaths"]}')],
+              [sg.Text(f'Recovered: {data["recovered"]}')],
+              [sg.Text(f'Today Recovered: {data["todayRecovered"]}')],
+              [sg.Button('Close')]]
+    gui(layout)

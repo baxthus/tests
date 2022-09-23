@@ -29,11 +29,11 @@ def gui(layout1, url, url2, url3):
 
 
 def layout_final(final_url1):
-    layout2 = [[sg.Text('Your shorter URL: '),
+    layout1 = [[sg.Text('Your shorter URL: '),
                 sg.InputText(final_url1, readonly=True)],
                [sg.Button('Copy'), sg.Button('Close')]]
 
-    return layout2
+    return layout1
 
 
 layout = [[sg.Text('Select a service to use below')],
